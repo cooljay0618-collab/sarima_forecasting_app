@@ -501,20 +501,27 @@ with st.sidebar:
     st.markdown(f"<p style='text-align: center; font-weight: 700; color: #000000; margin: 4px 0;'>📆 {forecast_months}개월 예측</p>", unsafe_allow_html=True)
 
 # ==================== 메인 콘텐츠 ====================
-st.markdown("<h1 style='margin: 0 0 8px 0; font-size: 32px;'>📊 수요예측 대시보드</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='margin: 0 0 4px 0; font-size: 32px;'>📊 수요예측 대시보드</h1>", unsafe_allow_html=True)
+
+# 버튼 스타일 CSS
+st.markdown("""
+<style>
+div[data-testid="stHorizontalBlock"] > div:nth-child(2) > div {
+    display: flex;
+    justify-content: center;
+}
+div[data-testid="stHorizontalBlock"] > div:nth-child(2) button {
+    height: 44px !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    padding: 8px 24px !important;
+    min-height: 44px !important;
+}
+</style>
+""", unsafe_allow_html=True)
 
 _, mid_btn, _ = st.columns([2, 1, 2])
 with mid_btn:
-    st.markdown("""
-    <style>
-    [data-testid="stButton"] button {
-        height: 48px !important;
-        font-size: 18px !important;
-        font-weight: 700 !important;
-        padding: 10px 20px !important;
-    }
-    </style>
-    """, unsafe_allow_html=True)
     run_clicked = st.button("📈 예측 실행", key="forecast_btn", use_container_width=True)
     if run_clicked:
         st.session_state.run_forecast = True
